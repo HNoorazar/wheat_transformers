@@ -21,7 +21,6 @@ import numpy as np
 import random
 import os, os.path, pickle, sys
 
-
 import matplotlib
 import matplotlib.pyplot as plt
 
@@ -29,7 +28,13 @@ import matplotlib.pyplot as plt
 dpi_, map_dpi_ = 300, 300
 
 # %%
-data_base = "/Users/hn/Documents/01_research_data/Ehsan/wheat/Data/"
+os.getcwd()
+
+# %%
+# data_base = "/Users/hn/Documents/01_research_data/Ehsan/wheat/Data/"
+data_base = "./../../../01_research_data/Ehsan/wheat/Data/00_raw_by_location/"
+file_list = os.listdir(data_base)
+file_list
 
 # %%
 file_list = os.listdir(data_base)
@@ -47,6 +52,7 @@ df.head(3)
 # %%time
 
 no_cols = 0
+check = True
 
 for a_file in file_list:
     df = df = pd.read_excel(data_base + a_file)
@@ -60,19 +66,19 @@ for a_file in file_list:
         
         if columns_set != set(df.columns):
             print (f"{a_file} has different columns")
+            check = False
+            
+if check:
+    all_files = pd.DataFrame()
+    # Example: read all CSV files in a folder
+    for a_file in file_list:
+        print (a_file)
+        df = pd.read_excel(data_base + a_file)
+        df['location'] = a_file.replace(".xlsx", "").replace(". ", "_").replace(" ", "_").lower()
+        all_files = pd.concat([all_files, df], ignore_index=True)
 
-# %% [markdown]
-# #### Good. Now let us read and concatenate all the files.
 
 # %%
-all_files = pd.DataFrame()
-
-# Example: read all CSV files in a folder
-for a_file in file_list:
-    print (a_file)
-    df = pd.read_excel(data_base + a_file)
-    df['location'] = a_file.replace(".xlsx", "").replace(". ", "_").replace(" ", "_").lower()
-    all_files = pd.concat([all_files, df], ignore_index=True)
 
 # %%
 # we do not need hour:minute:second:
@@ -116,5 +122,10 @@ column_names = {'AEt': "",
                  'WD': "",
                  'WS': "",
                  'dap': ""}
+
+# %%
+
+# %%
+all_files["Final_Season"].unique()
 
 # %%
