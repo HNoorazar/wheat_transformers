@@ -293,7 +293,6 @@ target/
 
 nb_checkpoints
 =======
-.ipynb_checkpoints
 
 # pyenv
 .python-version
