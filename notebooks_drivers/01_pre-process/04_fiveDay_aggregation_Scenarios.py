@@ -40,9 +40,12 @@ import argparse
 # sys.path.insert(0, str(PROJECT_ROOT))
 # from transformersCores import config
 # from transformersCores import config as cfg
-
+import sys
+sys.path.append('./../')
 import transformersCores.config as cfg
 import transformersCores.preprocess as prp
+
+# %%
 
 # %%
 import importlib

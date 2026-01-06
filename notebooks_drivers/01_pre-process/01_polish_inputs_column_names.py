@@ -19,7 +19,7 @@ import os
 # %%
 # data_base = "/Users/hn/Documents/01_research_data/Ehsan/wheat/Data/"
 # Define the base directory relative to your current working directory
-data_base = "./../../../01_research_data/Ehsan/wheat/Data/"
+data_base = "./../../../../01_research_data/Ehsan/wheat/Data/"
 raw_dir = os.path.join(data_base, "00_raw_by_location/")
 # raw_dir = os.path.abspath(raw_dir)
 
@@ -27,7 +27,6 @@ raw_dir = os.path.join(data_base, "00_raw_by_location/")
 fullName_units = pd.read_csv(data_base + "inputs_column_names.csv")
 fullName_units.head(3)
 fullName_units.rename(columns=lambda x: x.lower().replace(' ', '_'), inplace=True)
-
 
 # %%
 fullName_units
